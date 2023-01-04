@@ -1,0 +1,95 @@
+version: "3.7"
+
+services:
+  validator1:
+    image: hyperledger/besu:22.10.3
+    restart: unless-stopped
+    container_name: validator1
+    ports:
+      - "8545:8545"
+      - "8546:8546"
+    volumes:
+      - ./genesis.json:/opt/besu/genesis.json
+      - ./keys/validator1/key:/opt/besu/key
+    env_file:
+      - ./common.env
+      - ./bootnodes.env
+    environment:
+      - BESU_IDENTITY=validator1
+      - BESU_MINER_EXTRA_DATA=0x76616c696461746f7231
+      - BESU_RPC_HTTP_API=ADMIN,DEBUG,ETH,NET,PERM,PLUGINS,QBFT,TRACE,TXPOOL,WEB3
+      - BESU_RPC_HTTP_AUTHENTICATION_ENABLED=false
+      - BESU_RPC_HTTP_CORS_ORIGINS=all
+      - BESU_RPC_HTTP_ENABLED=true
+      - BESU_RPC_HTTP_HOST=0.0.0.0
+      - BESU_RPC_HTTP_MAX_ACTIVE_CONNECTIONS=100
+      - BESU_RPC_HTTP_PORT=8545
+      - BESU_RPC_WS_API=ADMIN,DEBUG,ETH,NET,PERM,PLUGINS,QBFT,TRACE,TXPOOL,WEB3
+      - BESU_RPC_WS_AUTHENTICATION_ENABLED=false
+      - BESU_RPC_WS_ENABLED=true
+      - BESU_RPC_WS_HOST=0.0.0.0
+      - BESU_RPC_WS_MAX_ACTIVE_CONNECTIONS=100
+      - BESU_RPC_WS_PORT=8546
+    networks:
+      qbft_network:
+        ipv4_address: 100.20.5.1
+
+  validator2:
+    image: hyperledger/besu:22.10.3
+    restart: unless-stopped
+    container_name: validator2
+    volumes:
+      - ./genesis.json:/opt/besu/genesis.json
+      - ./keys/validator2/key:/opt/besu/key
+    env_file:
+      - ./common.env
+      - ./bootnodes.env
+    environment:
+      - BESU_IDENTITY=validator2
+      - BESU_MINER_EXTRA_DATA=0x76616c696461746f7232
+    networks:
+      qbft_network:
+        ipv4_address: 100.20.5.2
+
+  validator3:
+    image: hyperledger/besu:22.10.3
+    restart: unless-stopped
+    container_name: validator3
+    volumes:
+      - ./genesis.json:/opt/besu/genesis.json
+      - ./keys/validator3/key:/opt/besu/key
+    env_file:
+      - ./common.env
+      - ./bootnodes.env
+    environment:
+      - BESU_IDENTITY=validator3
+      - BESU_MINER_EXTRA_DATA=0x76616c696461746f7233
+    networks:
+      qbft_network:
+        ipv4_address: 100.20.5.3
+
+  validator4:
+    image: hyperledger/besu:22.10.3
+    restart: unless-stopped
+    container_name: validator4
+    volumes:
+      - ./genesis.json:/opt/besu/genesis.json
+      - ./keys/validator4/key:/opt/besu/key
+    env_file:
+      - ./common.env
+      - ./bootnodes.env
+    environment:
+      - BESU_IDENTITY=validator4
+      - BESU_MINER_EXTRA_DATA=0x76616c696461746f7234
+    networks:
+      qbft_network:
+        ipv4_address: 100.20.5.4
+
+networks:
+  qbft_network:
+    name: qbft_network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 100.20.5.0/24
