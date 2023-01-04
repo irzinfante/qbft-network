@@ -21,3 +21,11 @@ We can generate the keys for the nodes using the script `new_key.sh` from the `s
 ```
 
 After executing the previous commands the keys (private key, address and enode) for each node can be found in a directory with the node's name inside the newly created `keys` directory.
+
+## Completing the genesis file
+
+Network's genesis file, `genesis.json`, needs to be completed as it lacks the bytecode (`<Contract Code>`) and the storage values (`<Storage Object>`) for the validator smart contract.
+
+To obtain this missing information we must follow the instructions from sections [Compiling the contract for deployment](https://github.com/irzinfante/validator-smart-contracts#compiling-the-contract-for-deployment) and [Create the genesis file content](https://github.com/irzinfante/validator-smart-contracts#create-the-genesis-file-content) from the https://github.com/irzinfante/validator-smart-contracts repository.
+
+- **NOTE:** The content of the file `initialValidators.txt` can be generated running `./scripts/initialValidators.sh`
