@@ -9,6 +9,12 @@ Current network configuration consists on 4 validator nodes, disposed in a $K_4$
 - On-chain validator election, requiring more than the 66% of the votes of current validators to add a new one or remove an existing one
 - On-chain permissioning for network nodes and wallet addresses
 
+In this repository we use Besu 22.10.3, in its dockerized version. To get the Besu docker image execute
+
+```sh
+docker pull hyperledger/besu:22.10.3
+```
+
 ## Generating the keys for the nodes
 
 We can generate the keys for the nodes using the script `new_key.sh` from the `scripts` directory.
