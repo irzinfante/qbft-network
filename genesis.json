@@ -13,43 +13,43 @@
       "qbft": [
         {
           "block": 10512000,
-          "blockreward": 78125000000000000
+          "blockreward": "78125000000000000"
         },
         {
           "block": 21024000,
-          "blockreward": 1220703125000000
+          "blockreward": "1220703125000000"
         },
         {
           "block": 31536000,
-          "blockreward": 19073486328125
+          "blockreward": "19073486328125"
         },
         {
           "block": 42048000,
-          "blockreward": 298023223876
+          "blockreward": "298023223876"
         },
         {
           "block": 52560000,
-          "blockreward": 4656612873
+          "blockreward": "4656612873"
         },
         {
           "block": 63072000,
-          "blockreward": 72759576
+          "blockreward": "72759576"
         },
         {
           "block": 73584000,
-          "blockreward": 1136868
+          "blockreward": "1136868"
         },
         {
           "block": 84096000,
-          "blockreward": 17763
+          "blockreward": "17763"
         },
         {
           "block": 94608000,
-          "blockreward": 277
+          "blockreward": "277"
         },
         {
           "block": 105120000,
-          "blockreward": 0
+          "blockreward": "0"
         }
       ]
     }
