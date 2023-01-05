@@ -5,18 +5,17 @@ services:
     image: hyperledger/besu:22.10.3
     restart: unless-stopped
     container_name: validator1
-    ports:
-      - "8545:8545"
-      - "8546:8546"
     volumes:
       - ./genesis.json:/opt/besu/genesis.json
       - ./keys/validator1/key:/opt/besu/key
+    network_mode: "host"
     env_file:
       - ./common.env
       - ./bootnodes.env
     environment:
       - BESU_IDENTITY=validator1
       - BESU_MINER_EXTRA_DATA=0x76616c696461746f7231
+      - BESU_P2P_PORT=30301
       - BESU_RPC_HTTP_API=ADMIN,DEBUG,ETH,NET,PERM,PLUGINS,QBFT,TRACE,TXPOOL,WEB3
       - BESU_RPC_HTTP_AUTHENTICATION_ENABLED=false
       - BESU_RPC_HTTP_CORS_ORIGINS=all
@@ -30,9 +29,6 @@ services:
       - BESU_RPC_WS_HOST=0.0.0.0
       - BESU_RPC_WS_MAX_ACTIVE_CONNECTIONS=100
       - BESU_RPC_WS_PORT=8546
-    networks:
-      qbft_network:
-        ipv4_address: 100.20.5.1
 
   validator2:
     image: hyperledger/besu:22.10.3
@@ -41,15 +37,14 @@ services:
     volumes:
       - ./genesis.json:/opt/besu/genesis.json
       - ./keys/validator2/key:/opt/besu/key
+    network_mode: "host"
     env_file:
       - ./common.env
       - ./bootnodes.env
     environment:
       - BESU_IDENTITY=validator2
       - BESU_MINER_EXTRA_DATA=0x76616c696461746f7232
-    networks:
-      qbft_network:
-        ipv4_address: 100.20.5.2
+      - BESU_P2P_PORT=30302
 
   validator3:
     image: hyperledger/besu:22.10.3
@@ -58,15 +53,14 @@ services:
     volumes:
       - ./genesis.json:/opt/besu/genesis.json
       - ./keys/validator3/key:/opt/besu/key
+    network_mode: "host"
     env_file:
       - ./common.env
       - ./bootnodes.env
     environment:
       - BESU_IDENTITY=validator3
       - BESU_MINER_EXTRA_DATA=0x76616c696461746f7233
-    networks:
-      qbft_network:
-        ipv4_address: 100.20.5.3
+      - BESU_P2P_PORT=30303
 
   validator4:
     image: hyperledger/besu:22.10.3
@@ -75,21 +69,11 @@ services:
     volumes:
       - ./genesis.json:/opt/besu/genesis.json
       - ./keys/validator4/key:/opt/besu/key
+    network_mode: "host"
     env_file:
       - ./common.env
       - ./bootnodes.env
     environment:
       - BESU_IDENTITY=validator4
       - BESU_MINER_EXTRA_DATA=0x76616c696461746f7234
-    networks:
-      qbft_network:
-        ipv4_address: 100.20.5.4
-
-networks:
-  qbft_network:
-    name: qbft_network
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 100.20.5.0/24
+      - BESU_P2P_PORT=30304
