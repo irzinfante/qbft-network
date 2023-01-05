@@ -35,3 +35,20 @@ Network's genesis file, `genesis.json`, needs to be completed as it lacks the by
 To obtain this missing information we must follow the instructions from sections [Compiling the contract for deployment](https://github.com/irzinfante/validator-smart-contracts#compiling-the-contract-for-deployment) and [Create the genesis file content](https://github.com/irzinfante/validator-smart-contracts#create-the-genesis-file-content) from the https://github.com/irzinfante/validator-smart-contracts repository.
 
 - **NOTE:** The content of the file `initialValidators.txt` can be generated running `./scripts/initialValidators.sh`
+
+## Getting up the network
+
+To get up the network we must start the nodes as services from the `docker-compose.yaml` file. Before that, to generate the content for the bootnodes option of Besu, we run the script
+
+```sh
+./scripts/bootnodes.sh
+```
+
+which generates the file `bootnodes.env` with the needed configuration.
+
+Now we can get up the network with
+
+```sh
+docker-compose up -d
+```
+To check the status of the network we can use the RPC API of the `validator1` node at `http://127.0.0.1:8545`.
