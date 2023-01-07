@@ -52,3 +52,13 @@ Now we can get up the network with
 docker-compose up -d
 ```
 To check the status of the network we can use the RPC API of the `validator1` node at `http://127.0.0.1:8545`.
+
+## Compiling and deploying premissioning smart contracts
+
+We can compile the accounts and nodes permissioning smart contracts following the instruccion from the https://github.com/irzinfante/permissioning-smart-contracts repository, which also makes references to the official Besu documentation.
+
+To generate the content of the `.env` file for the [Deploying the contracts](https://github.com/irzinfante/permissioning-smart-contracts#deploying-the-contracts) step, we execute the following script in THIS repository:
+
+```sh
+./scripts/permissioning-smart-contracts.sh
+```
