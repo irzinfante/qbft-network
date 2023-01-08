@@ -53,6 +53,16 @@ docker-compose up -d
 ```
 To check the status of the network we can use the RPC API of the `validator1` node at `http://127.0.0.1:8545`.
 
+### Sirato explorer
+
+To get up the network packed with the [Sirato explorer from Web3 Labs](https://www.web3labs.com/sirato) execute instead the following command:
+
+```sh
+docker-compose -f docker-compose_sirato.yaml up -d
+```
+
+The explorer's dashboard will be abailable at `http://localhost/` after the initialization of all the services.
+
 ## Compiling and deploying premissioning smart contracts
 
 We can compile the accounts and nodes permissioning smart contracts following the instruccion from the https://github.com/irzinfante/permissioning-smart-contracts repository, which also makes references to the official Besu documentation.
