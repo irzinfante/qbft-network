@@ -63,7 +63,7 @@ docker-compose -f docker-compose_sirato.yaml up -d
 
 The explorer's dashboard will be abailable at `http://localhost/` after the initialization of all the services.
 
-### Blocscout explorer
+### Blockscout explorer
 
 To get up the network packed with the [Blockscout explorer](https://www.blockscout.com/) execute instead the following command:
 
