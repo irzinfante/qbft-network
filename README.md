@@ -63,6 +63,16 @@ docker-compose -f docker-compose_sirato.yaml up -d
 
 The explorer's dashboard will be abailable at `http://localhost/` after the initialization of all the services.
 
+### Blocscout explorer
+
+To get up the network packed with the [Blockscout explorer](https://www.blockscout.com/) execute instead the following command:
+
+```sh
+docker-compose -f docker-compose_blockscout.yaml up -d
+```
+
+The explorer's dashboard will be abailable at `http://localhost/` after the initialization of all the services.
+
 ## Compiling and deploying premissioning smart contracts
 
 We can compile the accounts and nodes permissioning smart contracts following the instruccion from the https://github.com/irzinfante/permissioning-smart-contracts repository, which also makes references to the official Besu documentation.
